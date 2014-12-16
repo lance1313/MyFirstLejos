@@ -30,7 +30,7 @@ public class DrawingRobot
 		{
 			int turnCount = 0;
 			try
-			{
+			{//hi
 				Motor.A.forward();
 				Motor.B.forward();
 				Thread.sleep(lenght*1000);
