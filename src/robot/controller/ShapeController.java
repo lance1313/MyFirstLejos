@@ -22,35 +22,35 @@ public class ShapeController
 			if(shapeCount == 0)
 			{
 			myBot.drawShape(1, 1);
-			//drawShape(myBot.angle()/*num of rotates*/,myBot.angle()/*how long forward*/)
+			
 			shapeCount++;
 			}
 			
 			else if(shapeCount == 1)
 			{
 			myBot.drawShape(4, 1);
-			//drawShape(myBot.angle()/*num of rotates*/,myBot.angle()/*how long forward*/)
+			
 			shapeCount++;
 			}
 			
 			else if(shapeCount == 2)
 			{
 			myBot.drawShape(3, 1);
-			//drawShape(myBot.angle()/*num of rotates*/,myBot.angle()/*how long forward*/)
+			
 			shapeCount++;
 			}
 			
 			else if(shapeCount == 3)
 			{
 			myBot.drawShape(6, 1);
-			//drawShape(myBot.angle()/*num of rotates*/,myBot.angle()/*how long forward*/)
+			
 			shapeCount++;
 			}
 			
 			else if(shapeCount == 4)
 			{
 			myBot.drawShape(8, 1);
-			//drawShape(myBot.angle()/*num of rotates*/,myBot.angle()/*how long forward*/)
+			
 			shapeCount++;
 			}
 			
