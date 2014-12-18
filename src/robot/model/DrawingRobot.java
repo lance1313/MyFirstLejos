@@ -21,6 +21,7 @@ public class DrawingRobot
 		backTouch = new TouchSensor(SensorPort.S2);
 		microphone = new SoundSensor(SensorPort.S3);	
 	}
+	
 	/**
 	 * 
 	 * @param vertexCount this is the number of turns
@@ -197,7 +198,7 @@ public class DrawingRobot
 		//this draws a circle
 		if(shapeCount == 0)
 		{
-		
+//			drawShape(4,1);
 		for(int drawCount = 0; drawCount < vertexCount; drawCount++)
 		{
 			int turnCount = 0;
@@ -205,10 +206,10 @@ public class DrawingRobot
 			{//hi
 				Motor.A.forward();
 				Motor.B.forward();
-				Thread.sleep(lenght*1000);
+				Thread.sleep(lenght*1500);
 				Motor.A.forward();
 				Motor.B.backward();
-				Thread.sleep(lenght*500);
+				Thread.sleep(lenght*700);
 				Motor.A.stop();
 				Motor.B.stop();
 				
