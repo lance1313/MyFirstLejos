@@ -1,9 +1,41 @@
 package robot.model;
 
 import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
+import lejos.nxt.SoundSensor;
+import lejos.nxt.TouchSensor;
+import lejos.nxt.UltrasonicSensor;
 
 public class DrawingRobot
 {
+	
+	private UltrasonicSensor mySonar;
+	private TouchSensor frontTouch;
+	private TouchSensor backTouch;
+	private SoundSensor microphone;
+	
+	public DrawingRobot()
+	{
+		mySonar = new UltrasonicSensor(SensorPort.S1);
+		frontTouch = new TouchSensor(SensorPort.S2);
+		backTouch = new TouchSensor(SensorPort.S3);
+		microphone = new SoundSensor(SensorPort.S4);	
+	}
+	
+	public void danceRobotDance()
+	{
+		
+	}
+
+	public void hasHapphephobia()
+	{
+		
+	}
+
+	public void driveAroundRoom()
+	{
+		
+	}
 	
 	public int calculateAngle(int vertexCount)
 	{
