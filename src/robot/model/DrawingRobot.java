@@ -13,6 +13,7 @@ public class DrawingRobot
 	private TouchSensor frontTouch;
 	private TouchSensor backTouch;
 	private SoundSensor microphone;
+	private int drive;
 	
 	public DrawingRobot()
 	{
@@ -20,10 +21,39 @@ public class DrawingRobot
 		frontTouch = new TouchSensor(SensorPort.S1);
 		backTouch = new TouchSensor(SensorPort.S2);
 		microphone = new SoundSensor(SensorPort.S3);	
+		drive = 0;
 	}
 	
+	public void driving()
+	{
+		if(microphone.readValue() >= 40)
+		{
+			danceRobotDance(5, 1);
+		}
+		else if(frontTouch.isPressed())
+		{
+			hasHapphephobia(3,1);
+		}
+		else if(backTouch.isPressed())
+		{
+			hasHapphephobia(3,1);
+		}
+		else if(mySonar.getDistance() >= 30)
+		{
+			driveAroundRoom(2,1);
+		}
+		else
+		{
+			Motor.A.forward();
+			Motor.B.forward();
+		}
+	
+		
+	}
+	
+	
 	/**
-	 * 
+	 * called when mic. is activated.
 	 * @param vertexCount this is the number of turns
 	 * @param lenght how far to go forward.
 	 */
@@ -32,39 +62,32 @@ public class DrawingRobot
 		int angle = calculateAngle(vertexCount);
 		//this is telling it how far away to be when it turns from an object in the way.
 
-		if(microphone.readValue() == 10)
-		{
-			for(int drawCount = 0; drawCount < vertexCount; drawCount++)
-			{
 				int turnCount = 0;
 				try
 				{//hi
-					Motor.A.forward();
-					Motor.B.forward();
-					Thread.sleep(lenght*1000);
+					
 					Motor.A.stop();
 					Motor.B.stop();
 					while(turnCount >= 3)
 					{
 					Motor.A.rotate(-angle,true);
 					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
 					turnCount++;
 					}
+					Motor.A.forward();
+					Motor.B.forward();
+					
 				}
 				catch(Exception threadException)
 				{
 					System.out.print(threadException.getMessage());
 				}
-			}
-		}
+			
+		
 		
 	}
 	/**
-	 * 
+	 * called when the touch sensors are activated.
 	 * @param vertexCount
 	 * @param lenght
 	 */
@@ -74,40 +97,36 @@ public class DrawingRobot
 		
 		//this sas what to do when the front touch sensor is activated
 		 if(frontTouch.isPressed())
-		{
-			for(int drawCount = 0; drawCount < vertexCount; drawCount++)
-			{
+		 {
+			
 				int turnCount = 0;
 				try
 				{//hi
-					Motor.A.forward();
-					Motor.B.forward();
-					Thread.sleep(lenght*1000);
-					Motor.A.stop();
-					Motor.B.stop();
+					
+					
+					
+					Motor.A.backward();
+					Motor.b.backward();
 					while(turnCount >= 3)
 					{
 					Motor.A.rotate(-angle,true);
 					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
 					turnCount++;
 					}
+					Motor.A.forward();
+					Motor.B.forward();
 				}
 				catch(Exception threadException)
 				{
 					System.out.print(threadException.getMessage());
 				}
-			}
+			
 		}
 		 
 		//this tells it what to do when the rear touch sensor is activated.
 			if(backTouch.isPressed())
 			{
-				for(int drawCount = 0; drawCount < vertexCount; drawCount++)
-				{
+				
 					int turnCount = 0;
 					try
 					{//hi
@@ -120,10 +139,6 @@ public class DrawingRobot
 						{
 						Motor.A.rotate(-angle,true);
 						Motor.B.rotate(angle,true);
-//						Motor.A.rotate(-angle,true);
-//						Motor.B.rotate(angle,true);
-//						Motor.A.rotate(-angle,true);
-//						Motor.B.rotate(angle,true);
 						turnCount++;
 						}
 					}
@@ -131,11 +146,11 @@ public class DrawingRobot
 					{
 						System.out.print(threadException.getMessage());
 					}
-				}
+				
 			}
 	}
 /**
- * 
+ * called when sonar is activated.
  * @param vertexCount
  * @param lenght
  */
@@ -143,10 +158,8 @@ public class DrawingRobot
 	{
 		int angle = calculateAngle(vertexCount);
 		
-		if(mySonar.getDistance() == 10)
-		{
-			for(int drawCount = 0; drawCount < vertexCount; drawCount++)
-			{
+		
+			
 				int turnCount = 0;
 				try
 				{//hi
@@ -159,10 +172,6 @@ public class DrawingRobot
 					{
 					Motor.A.rotate(-angle,true);
 					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
-//					Motor.A.rotate(-angle,true);
-//					Motor.B.rotate(angle,true);
 					turnCount++;
 					}
 				}
@@ -170,8 +179,7 @@ public class DrawingRobot
 				{
 					System.out.print(threadException.getMessage());
 				}
-			}
-		}
+
 	}
 	
 	public int calculateAngle(int vertexCount)
@@ -182,10 +190,7 @@ public class DrawingRobot
 			currentAngle = 360/vertexCount;
 		}
 		
-//		else if(vertexCount == 1)
-//		{
-//			currentAngle = 0;
-//		}
+
 		
 		return currentAngle;
 	}
@@ -369,6 +374,8 @@ public class DrawingRobot
 		
 		
 	}
+
+	
 	
 	
 	
